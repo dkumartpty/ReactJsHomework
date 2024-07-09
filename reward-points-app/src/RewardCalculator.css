@@ -1,0 +1,49 @@
+/* RewardPointsCalculator.css */
+
+.reward-points-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reward-points-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .reward-points-container p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .reward-points-container h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .reward-points-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .reward-points-container li {
+    margin-bottom: 10px;
+  }
+  
+  .reward-points-container li h4 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+  
+  .reward-points-container li ul {
+    padding-left: 20px;
+  }
+  
+  .reward-points-container li ul li {
+    font-size: 1.1em;
+  }
+  
