@@ -1,28 +1,33 @@
+
 [
-    {
-      "id": 1,
-      "date": "2023-07-01",
-      "amount": 120
-    },
-    {
-      "id": 2,
-      "date": "2023-07-15",
-      "amount": 80
-    },
-    {
-      "id": 3,
-      "date": "2023-08-05",
-      "amount": 150
-    },
-    {
-      "id": 4,
-      "date": "2023-08-10",
-      "amount": 90
-    },
-    {
-      "id": 5,
-      "date": "2023-09-02",
-      "amount": 60
-    }
-  ]
-  
+  {
+    "transactionId": 1,
+    "customerId": 1,
+    "date": "2024-06-15",
+    "amount": 120
+  },
+  {
+    "transactionId": 2,
+    "customerId": 2,
+    "date": "2024-06-20",
+    "amount": 80
+  },
+  {
+    "transactionId": 3,
+    "customerId": 1,
+    "date": "2024-07-05",
+    "amount": 150
+  },
+  {
+    "transactionId": 4,
+    "customerId": 3,
+    "date": "2024-07-10",
+    "amount": 60
+  },
+  {
+    "transactionId": 5,
+    "customerId": 1,
+    "date": "2024-08-02",
+    "amount": 90
+  }
+]

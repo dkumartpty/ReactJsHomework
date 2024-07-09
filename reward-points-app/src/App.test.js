@@ -1,23 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import RewardCalculator from './App';
+import { render, waitFor } from '@testing-library/react';
+import App from './App';
 
-// Mock fetch API (optional for simple rendering test)
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve([]), // Empty array or appropriate mock data
-  })
-);
+describe('App Component', () => {
+  test('renders app title correctly', async () => {
+    const { getByText } = render(<App />);
+    const titleElement = getByText(/My Reward App/i);
+    expect(titleElement).toBeInTheDocument();
+  });
 
-describe('RewardCalculator', () => {
-  it('renders without crashing', async () => {
-    render(<RewardCalculator/>);
-    
-    // Optionally wait for some time if needed
-    // await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Basic assertion to check if the component renders without throwing an error
-    expect(true).toBeTruthy();
+  test('renders RewardCalculator component', async () => {
+    const { getByText } = render(<App />);
+    const rewardCalculatorElement = getByText(/Reward Points Calculator/i);
+    expect(rewardCalculatorElement).toBeInTheDocument();
   });
 });

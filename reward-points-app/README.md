@@ -27,6 +27,12 @@ React JS
 JavaScript (ES6+)
 HTML/CSS
 
+# screenshot of working and error 
+
+[errorscreenshot.jpeg](./src/Screenshots/errorscreenshot.jpeg)
+
+[WorkingScreenshot](./src/Screenshots/WorkingScreenshot.jpeg)
+
 
 # Getting Started with Create React App
 
