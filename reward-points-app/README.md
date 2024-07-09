@@ -55,6 +55,179 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+
+### Documentation for RewardCalculator Component Tests
+
+# Overview
+
+The RewardCalculator component is designed to fetch transaction data and calculate reward points. This test suite ensures the component functions correctly by verifying the correct rendering of reward points and handling fetch errors gracefully.
+
+# Test Suite: RewardCalculator Component
+
+# Test Data
+
+Mock transaction data is created to simulate real transactions.
+
+const mockTransactionData = [
+  { id: 1, date: '2024-07-01', amount: 120 },
+  { id: 2, date: '2024-07-15', amount: 80 },
+  { id: 3, date: '2024-06-20', amount: 60 },
+];
+
+# Setup and Teardown
+
+beforeEach: Mocks the global fetch function to simulate successful data fetching.
+
+afterEach: Restores the original fetch function to prevent side effects in other tests.
+
+beforeEach(() => {
+  jest.spyOn(global, 'fetch').mockResolvedValue({
+    ok: true,
+    json: jest.fn().mockResolvedValue(mockTransactionData),
+  });
+});
+
+afterEach(() => {
+  global.fetch.mockRestore();
+});
+
+# Tests
+
+renders reward points by month correctly
+
+Renders the RewardCalculator component.
+
+Waits for the component to fetch and process data.
+
+Asserts that the total reward points and specific months are displayed correctly.
+
+test('renders reward points by month correctly', async () => {
+  const { getByText } = render(<RewardCalculator />);
+  await waitFor(() => {
+    expect(getByText(/Total Reward Points:/i)).toBeInTheDocument();
+    expect(getByText(/07-2024/i)).toBeInTheDocument();
+    expect(getByText(/06-2024/i)).toBeInTheDocument();
+  });
+});
+
+# handles error when fetching transaction data fails
+
+Mocks a failed fetch request.
+
+Renders the RewardCalculator component.
+
+Waits for the component to handle the fetch error.
+
+Asserts that an error message is displayed.
+
+test('handles error when fetching transaction data fails', async () => {
+  global.fetch.mockResolvedValueOnce({
+    ok: false,
+  });
+
+  const { getByText } = render(<RewardCalculator />);
+  await waitFor(() => {
+    expect(getByText(/Error fetching transaction data:/i)).toBeInTheDocument();
+  });
+});
+
+
+Documentation for RewardCalculator Component Tests
+Overview
+
+The RewardCalculator component is designed to fetch transaction data and calculate reward points. This test suite ensures the component functions correctly by verifying the correct rendering of reward points and handling fetch errors gracefully.
+
+Test Suite: RewardCalculator Component
+
+Test Data
+
+Mock transaction data is created to simulate real transactions.
+
+javascript
+Copy code
+const mockTransactionData = [
+  { id: 1, date: '2024-07-01', amount: 120 },
+  { id: 2, date: '2024-07-15', amount: 80 },
+  { id: 3, date: '2024-06-20', amount: 60 },
+];
+Setup and Teardown
+
+beforeEach: Mocks the global fetch function to simulate successful data fetching.
+
+afterEach: Restores the original fetch function to prevent side effects in other tests.
+
+javascript
+Copy code
+beforeEach(() => {
+  jest.spyOn(global, 'fetch').mockResolvedValue({
+    ok: true,
+    json: jest.fn().mockResolvedValue(mockTransactionData),
+  });
+});
+
+afterEach(() => {
+  global.fetch.mockRestore();
+});
+Tests
+
+renders reward points by month correctly
+
+Renders the RewardCalculator component.
+
+Waits for the component to fetch and process data.
+
+Asserts that the total reward points and specific months are displayed correctly.
+
+javascript
+Copy code
+test('renders reward points by month correctly', async () => {
+  const { getByText } = render(<RewardCalculator />);
+  await waitFor(() => {
+    expect(getByText(/Total Reward Points:/i)).toBeInTheDocument();
+    expect(getByText(/07-2024/i)).toBeInTheDocument();
+    expect(getByText(/06-2024/i)).toBeInTheDocument();
+  });
+});
+handles error when fetching transaction data fails
+
+Mocks a failed fetch request.
+
+Renders the RewardCalculator component.
+
+Waits for the component to handle the fetch error.
+
+Asserts that an error message is displayed.
+
+javascript
+Copy code
+test('handles error when fetching transaction data fails', async () => {
+  global.fetch.mockResolvedValueOnce({
+    ok: false,
+  });
+
+  const { getByText } = render(<RewardCalculator />);
+  await waitFor(() => {
+    expect(getByText(/Error fetching transaction data:/i)).toBeInTheDocument();
+  });
+});
+## Flow Diagram
+# High-Level Flow
+
+1.Start
+2.Test Initialization
+Set up mock data and fetch function.
+3.Render Component
+Render RewardCalculator component.
+4.Check Fetch Success
+If fetch succeeds, proceed to calculate and render reward points.
+If fetch fails, proceed to render error message.
+5.Assertions
+Verify reward points and months are displayed correctly (on success).
+Verify error message is displayed (on failure).
+6.Cleanup
+Restore original fetch function.
+7.End
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
